@@ -96,7 +96,7 @@ folder="/data/image"
 folder_ad="/data/toimage"
 imglist=listdir(folder)
 num=len(imglist)
-img_tra()
+#img_tra()
 num=len(listdir(folder_ad))
 label=[]
 for i in range (0,num):

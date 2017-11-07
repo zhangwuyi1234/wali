@@ -91,8 +91,6 @@ def mkcf():
     print(' pickle.dump Data_batch  end --'+binpath)
 
 
-
-
 folder="/data/image"
 folder_ad="/data/toimage"
 imglist=listdir(folder)

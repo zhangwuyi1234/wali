@@ -26,16 +26,16 @@ def forDelFile(imglisttemp):
     for img in imglisttemp:
         ub.delFile(folder_ad+"/"+img)	
 def img_tra():
-    for k in range(0,lnum):
+    for k in range(0,num):
         currentpath=folder+"/"+imglista[k]
         im=Image.open(currentpath)
         im = im.convert('RGB')
         #width=im.size[0]
         #height=im.size[1]
-        x_s=350
-        y_s=500
+        x_s=35
+        y_s=50
         out = im.resize((x_s,y_s),Image.ANTIALIAS)
-        out.save(folder_ad+"/"+str(imglista[k]))
+        out.save(folder_ad+"/"+str(imglist[k]))
 	#ub.delFile(currentpath)
 def addWord(theIndex,word,adder):
     theIndex.setdefault(word,[]).append(adder)
@@ -45,7 +45,7 @@ def seplabel(fname):
     if label==-1:
         label=0;
     return label
-def mkcf(idx):
+def mkcf():
     global data
     global list1
     global list2
@@ -55,16 +55,16 @@ def mkcf(idx):
         currentpath=folder_ad+"/"+imglist[k]
         im=Image.open(currentpath)
         #with open(binpath, 'a') as f:
-        for i in range (0,350):
-            for j in range (0,500):
+        for i in range (0,35):
+            for j in range (0,50):
                 cl=im.getpixel((i,j))
                 list1.append(cl[0])
-        for i in range (0,350):
-            for j in range (0,500):
+        for i in range (0,35):
+            for j in range (0,50):
                 cl=im.getpixel((i,j))
                 list1.append(cl[1])
-        for i in range (0,350):
-            for j in range (0,500):
+        for i in range (0,35):
+            for j in range (0,50):
                 cl=im.getpixel((i,j))
                 list1.append(cl[2])
         list2.append(list1)
@@ -74,7 +74,7 @@ def mkcf(idx):
         list3.append(imglist[k].encode('utf-8'))
     arr2=np.array(list2,dtype=np.uint8)
     list2=[]
-    data['batch_label'.encode('utf-8')]="training batch {} of {}".format(idx, bin_num).encode('utf-8')
+    data['batch_label'.encode('utf-8')]="training batch {} of {}".format(1, 1).encode('utf-8')
     data.setdefault('labels'.encode('utf-8'),label)
     data.setdefault('data'.encode('utf-8'),arr2)
     arr2=[]
@@ -87,40 +87,23 @@ def mkcf(idx):
     #t = threading.Thread(target=target)
     #t.start()
     #t.join()	
-    #target()
+    target()
     print(' pickle.dump Data_batch  end --'+binpath)
+
+
+
 
 folder="/data/image"
 folder_ad="/data/toimage"
-imglista=listdir(folder)
-lnum=len(imglista)
-
+imglist=listdir(folder)
+num=len(imglist)
 img_tra()
-#imglista=listdir(folder_ad)
-#lnum=len(imglista)
+num=len(listdir(folder_ad))
+for i in range (0,num):
+    label.append(seplabel(imglist[i]))
+binpath="/data/bin/data_batch_"+str(j)
+print(binpath)
+mkcf()
 
-
-imgnum=200
-bin_num=int(lnum/imgnum)
-print bin_num
-imglistb = [imglista[i:i+imgnum] for i in range(0,lnum,imgnum)]
-
-size=len(imglistb)
-print(size)
-
-binpath=""
-imglist=[]
-label=[]
-num=0      
-
-for j in range(0,size):
-    imglist=imglistb[j]
-    num=len(imglist)
-    for i in range (0,num):
-        label.append(seplabel(imglist[i]))
-    binpath="/data/bin/data_batch_"+str(j)
-    print(binpath)
-    mkcf(j)
-    label=[]
    
 

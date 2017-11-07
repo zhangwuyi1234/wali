@@ -101,7 +101,7 @@ num=len(listdir(folder_ad))
 label=[]
 for i in range (0,num):
     label.append(seplabel(imglist[i]))
-binpath="/data/bin/data_batch_"+str(j)
+binpath="/data/bin/data_batch_0"
 print(binpath)
 mkcf()
 

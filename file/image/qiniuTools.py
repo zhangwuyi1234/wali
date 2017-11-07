@@ -77,7 +77,8 @@ def dowImage( key, localPath):
     :param localPath: 存储到本地的路径
     :return: None
     '''
-    downloadUrl = __getDownloadUrl(bucket, key)
+    baseUrl='http://owcxc992o.bkt.clouddn.com/'+key
+    downloadUrl=auth.private_download_url(baseUrl)
     print(downloadUrl)
     resp = requests.get(downloadUrl)
     path = localPath + "/" + key

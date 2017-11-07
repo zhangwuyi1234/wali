@@ -81,8 +81,7 @@ def dowImage( key, localPath):
     downloadUrl=auth.private_download_url(baseUrl)
     print(downloadUrl)
     resp = requests.get(downloadUrl)
-    path = localPath + "/" + key
-    with open(path, 'wb+') as f:
+    with open(localPath, 'wb+') as f:
         f.write(resp.content)
         
  

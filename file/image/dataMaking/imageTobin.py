@@ -83,7 +83,7 @@ def mkcf(idx):
     output = open(binpath, 'wb')
     pickle.dump(data, output)
     output.close
-
+    forDelFile(imglist)
     #t = threading.Thread(target=target)
     #t.start()
     #t.join()	
@@ -122,5 +122,5 @@ for j in range(0,size):
     print(binpath)
     mkcf(j)
     label=[]
-    forDelFile(imglist)
+   
 

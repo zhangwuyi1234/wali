@@ -27,7 +27,7 @@ def forDelFile(imglisttemp):
         ub.delFile(folder_ad+"/"+img)	
 def img_tra():
     for k in range(0,num):
-        currentpath=folder+"/"+imglista[k]
+        currentpath=folder+"/"+imglist[k]
         im=Image.open(currentpath)
         im = im.convert('RGB')
         #width=im.size[0]

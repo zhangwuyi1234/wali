@@ -1,5 +1,8 @@
 #coding=utf-8
 import qiniu
+import requests
+from qiniu.services.cdn.manager import create_timestamp_anti_leech_url
+import time
 import config as cf
 
 a=cf.loadConfig("qiniu")
@@ -63,6 +66,23 @@ def getDocSize(path):
     except Exception as err:
         print(err)
 
+        
+    
+
+def dowImage(key,path):
+    #http://owcxc992o.bkt.clouddn.com/00000120170916
+    host = 'owcxc992o.bkt.clouddn.com'
+    # 配置时间戳时指定的key
+    encrypt_key = key
+    # 资源路径
+    #file_name = path
+    # 查询字符串,不需要加?
+    query_string = key
+    # 截止日期的时间戳,秒为单位，3600为当前时间一小时之后过期
+    deadline = int(time.time())+3600
+    timestamp_url = create_timestamp_anti_leech_url(host, path, query_string, encrypt_key, deadline)
+    print(timestamp_url)
+        
  
 if __name__ == "__main__":
     filePath = "/usr/work/github/file/image/test.txt"

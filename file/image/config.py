@@ -1,5 +1,5 @@
 def load():
-    file = open("/temp/sample.txt")
+    file = open("/tmp/sample.txt")
     a=[]
     while 1:
         line = file.readline()

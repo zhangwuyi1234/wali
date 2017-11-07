@@ -20,7 +20,8 @@ def delFile(filePath):
 
 def upBatch(filePath):
     fileName=filePath.split('/')[-1]
-    ob.upFile("bin/"+fileName,filePath)
+    #aohai_test/cifar-10-batches-py/
+    ob.upFile("aohai_test/cifar-10-batches-py/"+fileName,filePath)
     delFile(filePath)
         
 def upBatchAll(folder):

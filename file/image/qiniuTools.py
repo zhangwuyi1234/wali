@@ -9,6 +9,7 @@ a=cf.loadConfig("qiniu")
 accessKey = a[0].strip()
 secretKey = a[1].strip()
 bucket = "share0"
+auth = qiniu.Auth(accessKey, secretKey)
 
 #解析结果
 def parseRet(retData, respInfo):
@@ -34,7 +35,6 @@ def parseRet(retData, respInfo):
 #无key上传，http请求中不指定key参数
 def upload_without_key(key, filePath):
   #生成上传凭证
-  auth = qiniu.Auth(accessKey, secretKey)
   upToken = auth.upload_token(bucket, key)
   #上传文件
   retData, respInfo = qiniu.put_file(upToken, key, filePath)

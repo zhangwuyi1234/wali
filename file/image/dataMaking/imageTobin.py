@@ -19,6 +19,7 @@ list1=[]
 list2=[]
 list3=[]
 
+
 def target():
     ub.upBatch(binpath)
     print('--upData_batch.py  end'+binpath)	
@@ -97,6 +98,7 @@ imglist=listdir(folder)
 num=len(imglist)
 img_tra()
 num=len(listdir(folder_ad))
+label=[]
 for i in range (0,num):
     label.append(seplabel(imglist[i]))
 binpath="/data/bin/data_batch_"+str(j)

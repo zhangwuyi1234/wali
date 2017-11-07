@@ -3,16 +3,12 @@
 import os
 from pymongo import *
 import qiniuTools as qb
-qb.init("oss1")
-
 
 client = MongoClient("localhost", 27017)
 db = client.share
 collection = db.code
 
-
 if __name__ == "__main__":
-    
     count=db.image.count({"flag":1,"output":{ '$ne' : -2 }})
     print(count)
     count=2500

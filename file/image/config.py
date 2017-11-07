@@ -1,5 +1,5 @@
 def load():
-    file = open("/usr/work/github/file/image/sample.txt")
+    file = open("sample.txt")
     a=[]
     while 1:
         line = file.readline()

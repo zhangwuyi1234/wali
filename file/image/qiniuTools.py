@@ -85,8 +85,11 @@ def dowImage(key,path):
         
  
 if __name__ == "__main__":
-    filePath = "/usr/work/github/file/image/test.txt"
-    upload_without_key("testtxt", filePath)
+    #filePath = "/usr/work/github/file/image/test.txt"
+    #upload_without_key("testtxt", filePath)
+    key='00000120170916'
+    path = '/tmp/'+key+'.png'
+    dowImage(key,path)
 
 
 

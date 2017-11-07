@@ -69,27 +69,28 @@ def getDocSize(path):
         
     
 
-def dowImage(key,path):
-    #http://owcxc992o.bkt.clouddn.com/00000120170916
-    host = 'owcxc992o.bkt.clouddn.com'
-    # 配置时间戳时指定的key
-    encrypt_key = key
-    # 资源路径
-    #file_name = path
-    # 查询字符串,不需要加?
-    query_string = key
-    # 截止日期的时间戳,秒为单位，3600为当前时间一小时之后过期
-    deadline = int(time.time())+3600
-    timestamp_url = create_timestamp_anti_leech_url(host, path, query_string, encrypt_key, deadline)
-    print(timestamp_url)
+def dowImage( key, localPath):
+    '''
+    开始下载
+    :param bucketName: 空间名称
+    :param key: 下载的文件名称
+    :param localPath: 存储到本地的路径
+    :return: None
+    '''
+    downloadUrl = __getDownloadUrl(bucket, key)
+    print(downloadUrl)
+    resp = requests.get(downloadUrl)
+    path = localPath + "/" + key
+    with open(path, 'wb+') as f:
+        f.write(resp.content)
         
  
 if __name__ == "__main__":
     #filePath = "/usr/work/github/file/image/test.txt"
     #upload_without_key("testtxt", filePath)
     key='00000120170916'
-    path = '/tmp/'+key+'.png'
-    dowImage(key,path)
+    localPath = '/tmp/'+key+'.png'
+    dowImage(key,localPath)
 
 
 

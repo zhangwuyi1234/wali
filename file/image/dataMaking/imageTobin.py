@@ -76,7 +76,7 @@ def mkcf():
 
 folder="/data/image"
 folder_ad="/data/toimage"
-imglist=listdir(folder_ad)
+imglist=listdir(folder)
 num=len(imglist)
 img_tra()
 label=[]

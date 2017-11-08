@@ -11,13 +11,15 @@ ob.init("oss2")
 def target():
     upBatch(binpath)
     print('--upData_batch.py  end'+binpath)
-    
+   
 def delFile(filePath):
     try:
         obs.remove(filePath)
     except BaseException as inis:
         print "--removeFileError---"
-
+def forDelFile(filePathList):
+    for i in filePathList:
+        delFile(i)
 def upBatch(filePath):
     fileName=filePath.split('/')[-1]
     #aohai_test/cifar-10-batches-py/

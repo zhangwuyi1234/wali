@@ -7,5 +7,5 @@ def unpickle(file):
     with open(file, 'rb') as fo:
         dict = cPickle.load(fo)
     return dict
-cc=unpickle("data_batch_0")
+cc=unpickle("/data/bin/data_batch_0")
 print(cc)

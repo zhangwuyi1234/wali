@@ -17,9 +17,10 @@ def delFile(filePath):
         obs.remove(filePath)
     except BaseException as inis:
         print "--removeFileError---"
-def forDelFile(filePathList):
-    for i in filePathList:
-        delFile(i)
+def forDelFile(folder_ad):
+    imglist=listdir(folder_ad)
+    for i in imglist:
+        delFile(folder_ad+"/"+i)
 def upBatch(filePath):
     fileName=filePath.split('/')[-1]
     #aohai_test/cifar-10-batches-py/

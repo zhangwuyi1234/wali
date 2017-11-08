@@ -28,6 +28,7 @@ def upBatchAll(folder):
     global binpath
     imglist=listdir(folder)
     num=len(imglist)
+    print num
     for j in range(0,num):
         binpath=folder+"/"+imglist[j]
         #t = threading.Thread(target=target)

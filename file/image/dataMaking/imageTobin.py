@@ -23,6 +23,10 @@ list3=[]
 def img_tra(fi,imglist,num):
     for k in range(0,num):
         currentpath=folder+"/bin"+str(fi)+"/"+imglist[k]
+	folder_adPath=folder_ad+"/bin"+str(fi)+"/"+str(imglist[k])
+	if os.path.exists(folder_adPath):
+	    print('==File exists==')
+	    continue
         im=Image.open(currentpath)
         im=im.convert('RGB')
         #width=im.size[0]
@@ -30,7 +34,7 @@ def img_tra(fi,imglist,num):
         x_s=640
         y_s=640
         out = im.resize((x_s,y_s),Image.ANTIALIAS)
-        out.save(folder_ad+"/bin"+str(fi)+"/"+str(imglist[k]))
+        out.save(folder_adPath)
 def addWord(theIndex,word,adder):
     theIndex.setdefault(word,[]).append(adder)
 def seplabel(fname):

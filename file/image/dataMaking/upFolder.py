@@ -32,9 +32,18 @@ def shearFolder(folder,folderPath,c):
         os.remove(tempPath)
         #os.system(' rm -rf '+tempPath) 
 
+def shearFolder(folderPath):
+    dnList=listdir(folderPath)
+    for dn in dnList:
+	dirName=folderPath+"/"+dn
+        fnlist=listdir(dirName)
+	for fn in fnlist:
+	    shutil.copy(dirName+"/"+fn, folderPath+"/"+fn) 
+        shutil.rmtree(dirName)
 
 if __name__ == "__main__":
     folderPath="/data/image"
-    folder_ad_Path="/data/toimage"
-    imgSize=200
-    shearFileList(folderPath)
+    #folder_ad_Path="/data/toimage"
+    #imgSize=200
+    #shearFileList(folderPath)
+    upShearFileList(folderPath)

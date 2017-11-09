@@ -32,7 +32,7 @@ def shearFolder(folder,folderPath,c):
         os.remove(tempPath)
         #os.system(' rm -rf '+tempPath) 
 
-def shearFolder(folderPath):
+def upShearFileList(folderPath):
     dnList=listdir(folderPath)
     for dn in dnList:
 	dirName=folderPath+"/"+dn

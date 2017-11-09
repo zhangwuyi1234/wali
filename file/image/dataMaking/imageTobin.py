@@ -37,7 +37,7 @@ def seplabel(fname):
     label=int(filestr.split("_")[0])
     return label
 def mkcf(fi,size):
-    imglist=listdir(folder+"/bin"+fi)
+    imglist=listdir(folder+"/bin"+str(fi))
     num=len(imglist)
     img_tra(fi,imglist,num)
     label=[]

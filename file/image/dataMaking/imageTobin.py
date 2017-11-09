@@ -19,9 +19,9 @@ data={}
 list1=[]
 list2=[]
 list3=[]
-def img_tra():
+def img_tra(fi,imglist,num):
     for k in range(0,num):
-        currentpath=folder+"/"+imglist[k]
+        currentpath=folder+"/bin"+str(fi)+"/"+imglist[k]
         im=Image.open(currentpath)
         im=im.convert('RGB')
         #width=im.size[0]
@@ -29,20 +29,27 @@ def img_tra():
         x_s=640
         y_s=640
         out = im.resize((x_s,y_s),Image.ANTIALIAS)
-        out.save(folder_ad+"/"+str(imglist[k]))
+        out.save(folder_ad+"/bin"+str(fi)+"/"+str(imglist[k]))
 def addWord(theIndex,word,adder):
     theIndex.setdefault(word,[]).append(adder)
 def seplabel(fname):
     filestr=fname.split(".")[0]
     label=int(filestr.split("_")[0])
     return label
-def mkcf():
+def mkcf(fi):
+    imglist=listdir(folder+"/bin"+fi)
+    num=len(imglist)
+    img_tra(fi,imglist,num)
+    label=[]
+    for i in range (0,num):
+        label.append(seplabel(imglist[i]))
+    print(num)
     global data
     global list1
     global list2
     global list3
     for k in range(0,num):
-        currentpath=folder_ad+"/"+imglist[k]
+        currentpath=folder_ad+"/bin"+fi+"/"+imglist[k]
         im=Image.open(currentpath)
         #with open(binpath, 'a') as f:
         for i in range (0,640):
@@ -73,18 +80,13 @@ def mkcf():
     output = open(binpath, 'wb')
     pickle.dump(data, output)
     output.close()
-    ub.forDelFile(folder_ad)
+    ub.forDelFile(folder_ad+"/bin"+fi)
     ub.upBatch(binpath)
 
 folder="/data/image"
 folder_ad="/data/toimage"
-imglist=listdir(folder)
-num=len(imglist)
-img_tra()
-label=[]
-for i in range (0,num):
-    label.append(seplabel(imglist[i]))
-binpath="/data/bin/test_batch"
-print(binpath)
-mkcf()
+binpath="/data/bin/data_batch"
+
+for fi in range (0,12):
+    mkcf(fi)
 	

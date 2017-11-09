@@ -83,7 +83,9 @@ def mkcf(fi,size):
     ub.forDelFile(folder_ad+"/bin"+fi)
     ub.upBatch(binpath+"_"+str(fi))
 
-
+folder="/data/image"
+folder_ad="/data/toimage"
+binpath="/data/bin/data_batch"
 
 files=listdir(folder)
 size=len(files)

@@ -32,6 +32,7 @@ def shearFolder(folder,folderPath,c):
         tempPath=folderPath+"/"+fileName
         shutil.copy(tempPath, folderPath+"/bin"+str(c)) 
         os.remove(tempPath)
-        #os.system(' rm -rf '+tempPath)  
-
-shearFileList(folderPath)
+        #os.system(' rm -rf '+tempPath) 
+	
+if __name__ == "__main__":
+    shearFileList(folderPath)

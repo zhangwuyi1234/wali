@@ -3,9 +3,7 @@ import os
 import shutil
 from os import listdir
 
-folderPath="/data/image"
-folder_ad_Path="/data/toimage"
-imgSize=200
+
 
 def mkdir(path):
     path=path.strip()
@@ -33,6 +31,9 @@ def shearFolder(folder,folderPath,c):
         shutil.copy(tempPath, folderPath+"/bin"+str(c)) 
         os.remove(tempPath)
         #os.system(' rm -rf '+tempPath) 
-	
+
+folderPath="/data/image"
+folder_ad_Path="/data/toimage"
+imgSize=200
 if __name__ == "__main__":
     shearFileList(folderPath)

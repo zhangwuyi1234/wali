@@ -11,7 +11,7 @@ collection = db.code
 if __name__ == "__main__":
     count=db.image.count({"flag":1,"output":{ '$ne' : -2 }})
     print(count)
-    count=2500
+    count=3600
     k=0
     for i in range(count):
         i=i+1

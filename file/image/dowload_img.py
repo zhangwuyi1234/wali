@@ -20,6 +20,6 @@ if __name__ == "__main__":
         output=str(image[0]['output'])
         fileName=str(image[0]['fileName'])
         path="/data/image/"+output+'_'+fileName+".jpg"
-        db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':2}})
         qb.dowImage(fileName,path)
+        db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':2}})
             

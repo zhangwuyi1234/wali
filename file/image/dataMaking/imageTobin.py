@@ -86,9 +86,20 @@ def mkcf(fi,size):
 folder="/data/image"
 folder_ad="/data/toimage"
 binpath="/data/bin/data_batch"
+imgSize=200
+shearFileList(folder)
+def shearFileList(folder):
+    total=listdir(folder)
+    imgNum=len(total)/imgSize
+    fileList = [imglista[i:i+imgSize] for i in range(0,total,imgSize)]
+    for c in range (0,imgNum):
+        targetFile=folder+"/bin"+str(fi)
+	os.makedirs(targetFile)
+        shearFileList(fileList,targetFile)
+	
 
 files=listdir(folder)
-size=len(files)/200
+size=len(files)/imgSize
 for fi in range (0,size):
     mkcf(fi,size)
 	

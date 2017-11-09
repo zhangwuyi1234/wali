@@ -3,7 +3,7 @@
 """
 Created on Tue Apr 18 14:17:45 2017
 
-@author: ielij
+@author: zhangwuyi
 """
 
 import upData_batch as ub

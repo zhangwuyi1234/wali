@@ -4,6 +4,7 @@ import shutil
 from os import listdir
 
 folderPath="/data/image"
+folder_ad_Path="/data/toimage"
 imgSize=200
 
 def mkdir(path):
@@ -21,7 +22,9 @@ def shearFileList(folderPath):
     folder = [fileList[i:i+imgSize] for i in range(0,total,imgSize)]
     for c in range(0,total/imgSize):
         targetFile=folderPath+"/bin"+str(c)
+	folder_adPath=folder_ad_Path+"/bin"+str(c)
 	mkdir(targetFile)
+	mkdir(folder_adPath)
         shearFolder(folder[c],folderPath,c)
 
 def shearFolder(folder,folderPath,c):

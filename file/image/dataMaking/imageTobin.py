@@ -49,7 +49,7 @@ def mkcf(fi,size):
     global list2
     global list3
     for k in range(0,num):
-        currentpath=folder_ad+"/bin"+fi+"/"+imglist[k]
+        currentpath=folder_ad+"/bin"+str(fi)+"/"+imglist[k]
         im=Image.open(currentpath)
         #with open(binpath, 'a') as f:
         for i in range (0,640):
@@ -80,7 +80,7 @@ def mkcf(fi,size):
     output = open(binpath, 'wb')
     pickle.dump(data, output)
     output.close()
-    ub.forDelFile(folder_ad+"/bin"+fi)
+    ub.forDelFile(folder_ad+"/bin"+str(fi))
     ub.upBatch(binpath+"_"+str(fi))
 
 folder="/data/image"

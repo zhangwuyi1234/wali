@@ -9,8 +9,8 @@ import aliyunTools as q
 q.init("oss2")
 
 def upShare():
-    os.system(' cd /tmp ')
-    os.system('mongodump -h 127.0.0.1 -d share -o /tmp')
+    #os.system(' cd /tmp ')
+    os.system('mongodump -h 127.0.0.1 -d share -o share')
     os.system('tar -cvf share.tar share ')
     key="share.tar"
     q.upFile( key, 'share.tar')

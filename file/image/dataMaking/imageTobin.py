@@ -7,6 +7,7 @@ Created on Tue Apr 18 14:17:45 2017
 """
 
 import upData_batch as ub
+import upFolder as uf
 #import threading
 import numpy as np
 from PIL import Image
@@ -83,15 +84,6 @@ def mkcf(fi,size):
     ub.forDelFile(folder_ad+"/bin"+str(fi))
     ub.upBatch(binpath+"_"+str(fi))
 
-	
-def mkdir(path):
-    path=path.strip()
-    isExists=os.path.exists(path)
-    if not isExists:
-        os.makedirs(path)
-        return True
-    else:
-        return False
 
 folder="/data/image"
 folder_ad="/data/toimage"
@@ -100,6 +92,6 @@ binpath="/data/bin/data_batch"
 files=listdir(folder)
 size=len(files)
 for fi in range (0,size):
-    mkdir(folder_ad+"/bin"+str(fi))
+    uf.mkdir(folder_ad+"/bin"+str(fi))
     mkcf(fi,size)
 	

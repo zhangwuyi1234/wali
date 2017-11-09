@@ -12,6 +12,7 @@ import upFolder as uf
 import numpy as np
 from PIL import Image
 import operator
+import os
 from os import listdir
 import sys
 import cPickle as pickle

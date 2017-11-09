@@ -79,10 +79,13 @@ def mkcf(fi,size):
         print("image"+str(k+1)+"saved.")
         list3.append(imglist[k].encode('utf-8'))
     arr2=np.array(list2,dtype=np.uint8)
+    list2=[]
     data['batch_label'.encode('utf-8')]='testing batch '+str(fi)+' of '+str(size).encode('utf-8')
     data.setdefault('labels'.encode('utf-8'),label)
     data.setdefault('data'.encode('utf-8'),arr2)
+    arr2=[]
     data.setdefault('filenames'.encode('utf-8'),list3)
+    list3=[]
     output = open(binpath, 'wb')
     pickle.dump(data, output)
     output.close()

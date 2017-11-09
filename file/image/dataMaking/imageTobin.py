@@ -36,7 +36,7 @@ def seplabel(fname):
     filestr=fname.split(".")[0]
     label=int(filestr.split("_")[0])
     return label
-def mkcf(fi):
+def mkcf(fi,size):
     imglist=listdir(folder+"/bin"+fi)
     num=len(imglist)
     img_tra(fi,imglist,num)
@@ -73,7 +73,7 @@ def mkcf(fi):
         print("image"+str(k+1)+"saved.")
         list3.append(imglist[k].encode('utf-8'))
     arr2=np.array(list2,dtype=np.uint8)
-    data['batch_label'.encode('utf-8')]='testing batch 1 of 1'.encode('utf-8')
+    data['batch_label'.encode('utf-8')]='testing batch '+str(fi)+' of '+str(size).encode('utf-8')
     data.setdefault('labels'.encode('utf-8'),label)
     data.setdefault('data'.encode('utf-8'),arr2)
     data.setdefault('filenames'.encode('utf-8'),list3)
@@ -81,12 +81,14 @@ def mkcf(fi):
     pickle.dump(data, output)
     output.close()
     ub.forDelFile(folder_ad+"/bin"+fi)
-    ub.upBatch(binpath)
+    ub.upBatch(binpath+"_"+str(fi))
 
 folder="/data/image"
 folder_ad="/data/toimage"
 binpath="/data/bin/data_batch"
 
-for fi in range (0,12):
-    mkcf(fi)
+files=listdir(folder)
+size=len(files)/200
+for fi in range (0,size):
+    mkcf(fi,size)
 	

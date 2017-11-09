@@ -83,23 +83,10 @@ def mkcf(fi,size):
     ub.forDelFile(folder_ad+"/bin"+fi)
     ub.upBatch(binpath+"_"+str(fi))
 
-folder="/data/image"
-folder_ad="/data/toimage"
-binpath="/data/bin/data_batch"
-imgSize=200
-shearFileList(folder)
-def shearFileList(folder):
-    total=listdir(folder)
-    imgNum=len(total)/imgSize
-    fileList = [imglista[i:i+imgSize] for i in range(0,total,imgSize)]
-    for c in range (0,imgNum):
-        targetFile=folder+"/bin"+str(fi)
-	os.makedirs(targetFile)
-        shearFileList(fileList,targetFile)
-	
+
 
 files=listdir(folder)
-size=len(files)/imgSize
+size=len(files)
 for fi in range (0,size):
     mkcf(fi,size)
 	

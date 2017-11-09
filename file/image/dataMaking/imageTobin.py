@@ -42,7 +42,7 @@ def seplabel(fname):
     filestr=fname.split(".")[0]
     label=int(filestr.split("_")[0])
     return label
-def mkcf(fi,size):
+def mkcf(fi,size,binpath):
     imglist=listdir(folder+"/bin"+str(fi))
     num=len(imglist)
     img_tra(fi,imglist,num)
@@ -90,16 +90,17 @@ def mkcf(fi,size):
     pickle.dump(data, output)
     output.close()
     ub.forDelFile(folder_ad+"/bin"+str(fi))
-    ub.upBatch(binpath+"_"+str(fi))
+    ub.upBatch(binpath)
 
 
 folder="/data/image"
 folder_ad="/data/toimage"
-binpath="/data/bin/data_batch"
+path="/data/bin/data_batch"
 
 files=listdir(folder)
 size=len(files)
 for fi in range (0,size):
+    binpath=path+"_"+str(fi)
     uf.mkdir(folder_ad+"/bin"+str(fi))
-    mkcf(fi,size)
+    mkcf(fi,size,binpath)
 	

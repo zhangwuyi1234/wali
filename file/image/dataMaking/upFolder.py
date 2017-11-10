@@ -27,7 +27,7 @@ def shearFolder(folder,folderPath,c):
     for fileName in folder:
         tempPath=folderPath+"/"+fileName
         shutil.copy(tempPath, folderPath+"/bin"+str(c)) 
-        os.remove(filename)
+        os.remove(tempPath)
         #os.system(' rm -rf '+tempPath)  
         
 def upShearFileList(folderPath):

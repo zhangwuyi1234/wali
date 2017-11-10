@@ -12,7 +12,7 @@ import qiniuTools as q
 import getData as gd
 from PIL import Image
 import aliyunTools as ob
-#import backup.upMongo as upMongo
+import backup.upMongo as upMongo
 
 ob.init("oss1")
 importlib.reload(sys)
@@ -153,6 +153,6 @@ for i in range(count):
 
 print("-----up----end-------")
 os.system('python3.6 /usr/work/github/file/image/backup/upMongo.py ')
-#upMongo.upShare()
+upMongo.upShare()
 
 

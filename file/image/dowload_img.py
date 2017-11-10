@@ -20,6 +20,8 @@ if __name__ == "__main__":
         output=str(image[0]['output'])
         fileName=str(image[0]['fileName'])
         path="/data/image/"+output+'_'+fileName+".jpg"
-        qb.dowImage(fileName,path)
+        isExists=os.path.exists(path)
+        if not isExists:
+            qb.dowImage(fileName,path)
         db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':2}})
             

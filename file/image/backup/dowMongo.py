@@ -3,7 +3,7 @@ import shutil
 import sys
 sys.path.append("..")
 import aliyunTools as ob
-ob.init("oss2")
+ob.init("oss1")
 
 key='share.tar'
 ob.dowFile(key,'share.tar')

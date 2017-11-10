@@ -23,8 +23,8 @@ list2=[]
 list3=[]
 def img_tra(fi,imglist,num):
     for k in range(0,num):
-        currentpath=folder+"/bin"+str(fi)+"/"+imglist[k]
-	folder_adPath=folder_ad+"/bin"+str(fi)+"/"+str(imglist[k])
+        currentpath=folder+"/"+fi+"/"+imglist[k]
+	folder_adPath=folder_ad+"/"+fi+"/"+str(imglist[k])
 	if os.path.exists(folder_adPath):
 	    print('==File exists==')
 	    continue
@@ -42,8 +42,8 @@ def seplabel(fname):
     filestr=fname.split(".")[0]
     label=int(filestr.split("_")[0])
     return label
-def mkcf(fi,size,binpath):
-    imglist=listdir(folder+"/bin"+str(fi))
+def mkcf(fi,binpath):
+    imglist=listdir(folder+"/"+fi)
     num=len(imglist)
     img_tra(fi,imglist,num)
     label=[]
@@ -55,7 +55,7 @@ def mkcf(fi,size,binpath):
     global list2
     global list3
     for k in range(0,num):
-        currentpath=folder_ad+"/bin"+str(fi)+"/"+imglist[k]
+        currentpath=folder_ad+"/"+fi+"/"+imglist[k]
         im=Image.open(currentpath)
         #with open(binpath, 'a') as f:
         for i in range (0,640):
@@ -80,7 +80,7 @@ def mkcf(fi,size,binpath):
         list3.append(imglist[k].encode('utf-8'))
     arr2=np.array(list2,dtype=np.uint8)
     list2=[]
-    data['batch_label'.encode('utf-8')]='testing batch '+str(fi)+' of '+str(size).encode('utf-8')
+    data['batch_label'.encode('utf-8')]='testing batch '+fi[-1]+' of 36'.encode('utf-8')
     data.setdefault('labels'.encode('utf-8'),label)
     data.setdefault('data'.encode('utf-8'),arr2)
     arr2=[]
@@ -89,7 +89,7 @@ def mkcf(fi,size,binpath):
     output = open(binpath, 'wb')
     pickle.dump(data, output)
     output.close()
-    ub.forDelFile(folder_ad+"/bin"+str(fi))
+    ub.forDelFile(folder_ad+"/"+fi)
     ub.upBatch(binpath)
 
 
@@ -97,10 +97,9 @@ folder="/data/image"
 folder_ad="/data/toimage"
 path="/data/bin/data_batch"
 
-files=listdir(folder)
-size=len(files)
-for fi in range (0,size):
-    binpath=path+"_"+str(fi)
-    uf.mkdir(folder_ad+"/bin"+str(fi))
-    mkcf(fi,size,binpath)
+files=listdir(folder_ad)
+for fi in files:
+    binpath=path+"_"+fi
+    uf.mkdir(folder_ad+"/"+fi)
+    mkcf(fi,binpath)
 	

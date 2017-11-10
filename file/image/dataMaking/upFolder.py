@@ -20,7 +20,9 @@ def shearFileList(folderPath):
     folder = [fileList[i:i+imgSize] for i in range(0,total,imgSize)]
     for c in range(0,len(folder)):
         targetFile=folderPath+"/bin"+str(c)
+        fPath=folder_ad_Path+"/bin"+str(c)
         mkdir(targetFile)
+        mkdir(fPath)
         shearFolder(folder[c],folderPath,c)
 
 def shearFolder(folder,folderPath,c):

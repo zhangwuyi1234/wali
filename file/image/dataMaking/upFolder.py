@@ -18,17 +18,17 @@ def shearFileList(folderPath):
     fileList=listdir(folderPath)
     total=len(fileList) 
     folder = [fileList[i:i+imgSize] for i in range(0,total,imgSize)]
-    for c in range(0,total/imgSize):
-        targetFile=folderPath+"/bin"+str(c)
-	folder_adPath=folder_ad_Path+"/bin"+str(c)
+    for c in folder:
+        targetFile=folderPath+"/"+c
+	folder_adPath=folder_ad_Path+"/"+c
 	mkdir(targetFile)
 	mkdir(folder_adPath)
-        shearFolder(folder[c],folderPath,c)
+        shearFolder(c,folderPath)
 
-def shearFolder(folder,folderPath,c):
+def shearFolder(folder,folderPath):
     for fileName in folder:
         tempPath=folderPath+"/"+fileName
-        shutil.copy(tempPath, folderPath+"/bin"+str(c)) 
+        shutil.copy(tempPath, folderPath+"/"+folder) 
         os.remove(tempPath)
         #os.system(' rm -rf '+tempPath) 
 
@@ -45,6 +45,6 @@ if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
     imgSize=100
-    shearFileList(folderPath)
+    #shearFileList(folderPath)
     
     #upShearFileList(folderPath)

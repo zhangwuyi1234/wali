@@ -80,7 +80,7 @@ def mkcf(fi,binpath):
         list3.append(imglist[k].encode('utf-8'))
     arr2=np.array(list2,dtype=np.uint8)
     list2=[]
-    data['batch_label'.encode('utf-8')]='testing batch '+fi[-1]+' of 36'.encode('utf-8')
+    data['batch_label'.encode('utf-8')]='testing batch '+fi[-1]+' of 18'.encode('utf-8')
     data.setdefault('labels'.encode('utf-8'),label)
     data.setdefault('data'.encode('utf-8'),arr2)
     arr2=[]

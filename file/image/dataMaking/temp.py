@@ -10,7 +10,7 @@ folder="/data/image"
 folder_ad="/data/toimage"
 imglist=listdir(folder)
 for i in imglist:
-    path=folder+i
+    path=folder+"/"+i
     filelist=listdir(path)
     num=len(filelist)
     print(num)

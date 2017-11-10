@@ -13,4 +13,4 @@ for i in imglist:
     path=folder+"/"+i
     filelist=listdir(path)
     num=len(filelist)
-    print(i+"=="+num)
+    print(str(i)+"=="+num)

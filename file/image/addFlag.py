@@ -1,5 +1,5 @@
 
-
+import os
 from pymongo import *
 import getData as gd
 
@@ -21,5 +21,5 @@ for i in images:
     
     print(code+"__"+time+"__"+str(re))
 #    k=k+1
-
 #db.image.update({},{$unset:{"output":""}},{multi:true})
+os.system('python3.6 /usr/work/github/file/image/backup/upMongo.py ')

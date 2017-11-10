@@ -38,7 +38,9 @@ def upShearFileList(folderPath):
         dirName=folderPath+"/"+dn
         fnlist=listdir(dirName)
         for fn in fnlist:
-            shutil.copy(dirName+"/"+fn, folderPath+"/"+fn) 
+            isExists=os.path.exists(folderPath+"/"+fn)
+            if not isExists:
+                shutil.copy(dirName+"/"+fn, folderPath+"/"+fn) 
         shutil.rmtree(dirName)
 
 if __name__ == "__main__":

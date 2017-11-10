@@ -47,6 +47,6 @@ if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
     imgSize=100
-    #shearFileList(folderPath)
+    shearFileList(folderPath)
     
-    upShearFileList(folderPath)
+    #upShearFileList(folderPath)

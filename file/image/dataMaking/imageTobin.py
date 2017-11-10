@@ -32,8 +32,8 @@ def img_tra(fi,imglist,num):
         im=im.convert('RGB')
         #width=im.size[0]
         #height=im.size[1]
-        x_s=240
-        y_s=240
+        x_s=320
+        y_s=320
         out = im.resize((x_s,y_s),Image.ANTIALIAS)
         out.save(folder_adPath)
 def addWord(theIndex,word,adder):
@@ -58,19 +58,19 @@ def mkcf(fi,binpath):
         currentpath=folder_ad+"/"+fi+"/"+imglist[k]
         im=Image.open(currentpath)
         #with open(binpath, 'a') as f:
-        for i in range (0,240):
-            for j in range (0,240):
+        for i in range (0,320):
+            for j in range (0,320):
                 cl=im.getpixel((i,j))
                 list1.append(cl[0])
-        for i in range (0,240):
-            for j in range (0,240):
+        for i in range (0,320):
+            for j in range (0,320):
                 cl=im.getpixel((i,j))
                 #with open(binpath, 'a') as f:
                 #mid=str(cl[1])
                 #f.write(mid)
                 list1.append(cl[1])
-        for i in range (0,240):
-            for j in range (0,240):
+        for i in range (0,320):
+            for j in range (0,320):
                 cl=im.getpixel((i,j))
                 list1.append(cl[2])
         list2.append(list1)

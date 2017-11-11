@@ -3,8 +3,6 @@ import os
 import shutil
 from os import listdir
 
-
-
 def mkdir(path):
     path=path.strip()
     isExists=os.path.exists(path)

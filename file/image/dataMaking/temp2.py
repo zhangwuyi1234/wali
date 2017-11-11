@@ -7,7 +7,7 @@ def mkdir(path):
     path=path.strip()
     isExists=os.path.exists(path)
     if isExists:
-        shutil.rmtree(dirName)
+        shutil.rmtree(path)
     os.makedirs(path)
 
 

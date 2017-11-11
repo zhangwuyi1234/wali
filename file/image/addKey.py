@@ -12,13 +12,5 @@ for i in images:
 #        break
 
     code=i['code']
-    code1=code+"20171106"
-    code2=code+"20171107"
-    code3=code+"20171108"
-    code4=code+"20171109"
-    code5=code+"20171110"
-    db.image.insert({'fileName':code1,'flag':0})
-    db.image.insert({'fileName':code2,'flag':0})
-    db.image.insert({'fileName':code3,'flag':0})
-    db.image.insert({'fileName':code4,'flag':0})
-    db.image.insert({'fileName':code5,'flag':0})
+    #code1=code+"20171106"
+    #db.image.insert({'fileName':code1,'flag':0})

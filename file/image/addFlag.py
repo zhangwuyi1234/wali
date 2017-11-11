@@ -6,6 +6,8 @@ import getData as gd
 client = MongoClient("localhost", 27017)
 db = client.share
 
+coutns=db.image.count({'flag':0})
+print(coutns)
 images=db.image.find({'flag':0})
 k=0
 for i in images:

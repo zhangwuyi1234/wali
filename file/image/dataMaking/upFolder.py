@@ -46,6 +46,6 @@ def upShearFileList(folderPath):
 if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
-    imgSize=400
+    imgSize=200
     #shearFileList(folderPath)
     upShearFileList(folderPath)

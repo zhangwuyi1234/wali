@@ -19,7 +19,7 @@ def shearFileList(folderPath):
     for c in range(0,len(folder)):
         dirNum=str(c+stratNum)
         targetFile=folderPath+"/bin"+dirNum
-        fPath targetFile=folder_ad_Path+"/bin"+dirNum
+        fPath=folder_ad_Path+"/bin"+dirNum
         mkdir(targetFile)
         mkdir(fPath)
         shearFolder(folder[c],folderPath,dirNum)

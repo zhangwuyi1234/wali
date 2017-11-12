@@ -31,6 +31,7 @@ def img_tra(fi,imglist,num):
 	try:
             im=Image.open(currentpath)
         except BaseException as inst:
+	    print('==Image.open.error==')
             continue
 	im=im.convert('RGB')
         #width=im.size[0]

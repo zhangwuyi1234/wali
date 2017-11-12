@@ -27,8 +27,12 @@ def img_tra(fi,imglist,num):
 	if os.path.exists(folder_adPath):
 	    print('==File exists==')
 	    continue
-        im=Image.open(currentpath)
-        im=im.convert('RGB')
+	global im
+	try:
+            im=Image.open(currentpath)
+        except BaseException as inst:
+            continue
+	im=im.convert('RGB')
         #width=im.size[0]
         #height=im.size[1]
         x_s=64

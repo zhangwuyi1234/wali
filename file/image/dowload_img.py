@@ -3,6 +3,8 @@
 import os
 from pymongo import *
 import qiniuTools as qb
+import backup.upMongo as upMongo
+
 
 client = MongoClient("localhost", 27017)
 db = client.share
@@ -25,3 +27,4 @@ if __name__ == "__main__":
             qb.dowImage(fileName,path)
         db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':2}})
             
+    upMongo.upShare()

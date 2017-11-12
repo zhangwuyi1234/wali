@@ -16,7 +16,7 @@ def shearFileList(folderPath):
     fileList=listdir(folderPath)
     total=len(fileList) 
     folder = [fileList[i:i+imgSize] for i in range(0,total,imgSize)]
-    for c in range(0,len(folder)):
+    for c in range(stratNum,len(folder)):
         targetFile=folderPath+"/bin"+str(c)
         fPath=folder_ad_Path+"/bin"+str(c)
         mkdir(targetFile)
@@ -44,6 +44,7 @@ def upShearFileList(folderPath):
 if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
-    imgSize=800
-    #shearFileList(folderPath)
-    upShearFileList(folderPath)
+    imgSize=1000
+    stratNum=4
+    shearFileList(folderPath)
+    #upShearFileList(folderPath)

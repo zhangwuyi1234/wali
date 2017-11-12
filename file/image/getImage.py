@@ -152,7 +152,6 @@ for i in range(count):
         db.code.update({'flag':0,'code':code},{'$set':{'flag':1,'end':end}})
 
 print("-----up----end-------")
-os.system('python3.6 /usr/work/github/file/image/backup/upMongo.py ')
 upMongo.upShare()
 
 

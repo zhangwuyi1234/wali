@@ -43,9 +43,10 @@ def upShearFileList(folderPath):
         shutil.rmtree(dirName)
 
 def checkImageOpen(imagePath):
-	try:
+    try:
         im=Image.open(imagePath)
-    except BaseException as inst:
+        im=im.convert('RGB')
+except BaseException as inst:
 	    os.remove(imagePath)
 def checkDirImage(folderPath):
     imgList=listdir(folderPath)
@@ -59,5 +60,5 @@ if __name__ == "__main__":
     stratNum=4
     
     checkDirImage(folderPath)
-    shearFileList(folderPath)
+    #shearFileList(folderPath)
     #upShearFileList(folderPath)

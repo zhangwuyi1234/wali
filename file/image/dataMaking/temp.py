@@ -5,7 +5,6 @@ import sys
 import random
 data={}
 
-
 folder="/data/image"
 folder_ad="/data/toimage"
 imglist=listdir(folder)

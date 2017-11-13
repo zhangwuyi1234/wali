@@ -57,7 +57,7 @@ if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
     imgSize=1000
-    stratNum=4
+    stratNum=0
     
     checkDirImage(folderPath)
     #shearFileList(folderPath)

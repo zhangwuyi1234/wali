@@ -42,10 +42,22 @@ def upShearFileList(folderPath):
                 shutil.copy(dirName+"/"+fn, folderPath+"/"+fn) 
         shutil.rmtree(dirName)
 
+def checkImageOpen(imagePath):
+	try:
+        im=Image.open(imagePath)
+    except BaseException as inst:
+	    os.remove(imagePath)
+def checkDirImage(folderPath):
+    imgList=listdir(folderPath)
+    for i in imgList:
+        checkImageOpen(folderPath+"/"+i);
+        
 if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
     imgSize=1000
     stratNum=4
+    
+    checkDirImage(folderPath)
     shearFileList(folderPath)
     #upShearFileList(folderPath)

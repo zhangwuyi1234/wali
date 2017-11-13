@@ -2,6 +2,7 @@
 import os
 import shutil
 from os import listdir
+from PIL import Image
 
 def mkdir(path):
     path=path.strip()

@@ -46,8 +46,8 @@ def checkImageOpen(imagePath):
     try:
         im=Image.open(imagePath)
         im=im.convert('RGB')
-except BaseException as inst:
-	    os.remove(imagePath)
+    except BaseException as inst:
+	os.remove(imagePath)
 def checkDirImage(folderPath):
     imgList=listdir(folderPath)
     for i in imgList:

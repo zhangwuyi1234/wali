@@ -55,11 +55,7 @@ def mkcf(fi,binpath):
     global list3
     for k in range(0,num):
         currentpath=folder_ad+"/"+fi+"/"+imglist[k]
-	try:
-            im=Image.open(currentpath)
-        except BaseException as inst:
-	    print('==Image.open.error==')
-            continue
+        im=Image.open(currentpath)
         #with open(binpath, 'a') as f:
         for i in range (0,64):
             for j in range (0,64):

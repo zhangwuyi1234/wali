@@ -2,6 +2,7 @@
 import os
 from pymongo import *
 import getData as gd
+import backup.upMongo as upMongo
 
 client = MongoClient("localhost", 27017)
 db = client.share
@@ -17,11 +18,9 @@ for i in images:
     fileName=i['fileName']
     code=fileName[0:6]
     time=fileName[6:]
-   
     re=gd.forCode(code,time)
     db.image.update({'fileName':fileName},{'$set':{'output':re,'flag':1}})
-    
     print(code+"__"+time+"__"+str(re))
 #    k=k+1
 #db.image.update({},{$unset:{"output":""}},{multi:true})
-os.system('python3.6 /usr/work/github/file/image/backup/upMongo.py ')
+upMongo.upShare()

@@ -15,7 +15,7 @@ collection = db.initData
 def getFlag(data):
     rouws=[]
     #print("getFlag===time==="+str(data[3]))
-    for j in range(3):
+    for j in range(5):
         print(data[j])
         temp=float(data[j][4].split("%")[0])
         rouws.append(temp)
@@ -40,10 +40,26 @@ def getData(code,start,end):
     data2=getFlag(data)
     print(data2)
     temp=sum(data2)
-    if temp>2:
+    if temp>16:
+        return 9
+    elif temp>14:
+        return 8
+    elif temp>12:
+        return 7
+    elif temp>10:
+        return 6
+    elif temp>8:
+        return 5
+    elif temp>6:
+        return 4
+    elif temp>4:
+        return 3
+    elif temp>2:
+        return 2
+    elif temp>0:
         return 1
     else:
-        return -1
+        return 0
     #collection.insert_many(data2)
  
 

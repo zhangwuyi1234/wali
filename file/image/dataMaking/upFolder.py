@@ -21,7 +21,10 @@ def imgShear(srcPath,tagetPath):
     x = 0
     y = 0
     region = im.crop((x, y, x+w, y+h))
-    region.save(tagetPath)
+    bg = Image.new("RGB", region.size, (255,255,255))
+    bg.paste(region,region)
+    bg.save(tagetPath)
+
 def shearFileList(folderPath):
     fileList=listdir(folderPath)
     total=len(fileList) 
@@ -38,7 +41,7 @@ def shearFolder(folder,folderPath,dirNum):
     for fileName in folder:
         tempPath=folderPath+"/"+fileName
         #shutil.copy(tempPath, folderPath+"/bin"+dirNum) 
-        imgShear(tempPath,folderPath+"/bin"+dirNum)
+        imgShear(tempPath,folderPath+"/bin"+dirNum+"/"+fileName)
         os.remove(tempPath)
         #os.system(' rm -rf '+tempPath)  
         
@@ -70,7 +73,7 @@ if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
     imgSize=1000
-    stratNum=9
+    stratNum=0
     
     #checkDirImage(folderPath)
     shearFileList(folderPath)

@@ -21,7 +21,7 @@ if __name__ == "__main__":
         k=i
         output=str(image[0]['output'])
         fileName=str(image[0]['fileName'])
-        path="/data/image/"+output+'_'+fileName+".jpg"
+        path="/data/image/"+output+'_'+fileName+".png"
         isExists=os.path.exists(path)
         if not isExists:
             qb.dowImage(fileName,path)

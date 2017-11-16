@@ -12,7 +12,16 @@ def mkdir(path):
         return True
     else:
         return False
-
+def imgShear(srcPath,tagetPath):
+    im = Image.open(srcPath)
+    img_size = im.size
+    #print("图片宽度和高度分别是{}".format(img_size))
+    w = img_size[0]/2.0
+    h = img_size[1]/2.0
+    x = 0
+    y = 0
+    region = im.crop((x, y, x+w, y+h))
+    region.save(tagetPath)
 def shearFileList(folderPath):
     fileList=listdir(folderPath)
     total=len(fileList) 
@@ -28,7 +37,8 @@ def shearFileList(folderPath):
 def shearFolder(folder,folderPath,dirNum):
     for fileName in folder:
         tempPath=folderPath+"/"+fileName
-        shutil.copy(tempPath, folderPath+"/bin"+dirNum) 
+        #shutil.copy(tempPath, folderPath+"/bin"+dirNum) 
+        imgShear(tempPath,folderPath+"/bin"+dirNum)
         os.remove(tempPath)
         #os.system(' rm -rf '+tempPath)  
         
@@ -42,6 +52,8 @@ def upShearFileList(folderPath):
             if not isExists:
                 shutil.copy(dirName+"/"+fn, folderPath+"/"+fn) 
         shutil.rmtree(dirName)
+	
+
 
 def checkImageOpen(imagePath):
     try:
@@ -60,6 +72,6 @@ if __name__ == "__main__":
     imgSize=1000
     stratNum=9
     
-    checkDirImage(folderPath)
-    #shearFileList(folderPath)
+    #checkDirImage(folderPath)
+    shearFileList(folderPath)
     #upShearFileList(folderPath)

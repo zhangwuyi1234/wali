@@ -22,23 +22,19 @@ client = MongoClient("localhost", 27017)
 db = client.share
 collection = db.code
 
-
 def getfilePath(fileName):
     filePath='/usr/work/github/file/image/data/'+ fileName +'.png'
     return filePath
 
 def getImage(code,te,formula,typem):
-     
     url="http://pifm3.eastmoney.com/EM_Finance2014PictureInterface/Index.aspx?ID="+code+te+"&UnitWidth=-6&imageType=KXL&EF=&Formula="+formula+"&&AT=&type="+typem+"&token=44c9d251add88e27b65ed86506f6e5da&0.2942712066803206"
     #print(url)
-
     end=time.strftime("%Y%m%d",time.localtime())    
     fileName=code+"_"+end+"_"+formula
     if "RSI"==formula or typem=="":
         formulaPath=getfilePath(fileName)
         urllib.request.urlretrieve(url,formulaPath)
         return formulaPath
-    
     formulaPath=getfilePath(formula)
     urllib.request.urlretrieve(url,formulaPath)   
     img=""
@@ -59,21 +55,16 @@ def getImage(code,te,formula,typem):
     return filePath
     #return formulaPath 
 
-
-
-
 def sumImage(files,code,end):
 
     img= Image.open(files[1])
     mw=img.size[0] #*img.sie[1]
-    mwy=img.size[1]
-        
+    mwy=img.size[1]  
     ms = 2
     msize = mw * ms
     msy =5
     mysize= mwy*msy
     toImage = Image.new('RGBA', (msize,mysize))
-
     ix=1
     for y in range(1, msy+1): 
         for x in range(1, ms+1):
@@ -104,7 +95,6 @@ def sumImage(files,code,end):
     os.remove(files[0])
     os.remove(filePath)
     os.remove(files[-1])
-
 
 
 end=time.strftime("%Y%2m%d",time.localtime())

@@ -5,7 +5,6 @@ from pymongo import *
 import qiniuTools as qb
 import backup.upMongo as upMongo
 
-
 client = MongoClient("localhost", 27017)
 db = client.share
 collection = db.code

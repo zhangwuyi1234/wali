@@ -79,7 +79,7 @@ def run(individual):
     temp=""
     for i in individual:
         temp+=list[i]
-    query=temp+u"非新股;非ST;非*ST;非停牌;不包含ST;非停牌股;不含次新股;非创业板;上市天数>30日;股价5-45元;"
+    query=temp+u"非新股;非ST;非*ST;非停牌;不含次新股;非创业板;上市天数>30日;股价5-45元;"
     try:
         fitness=getData(query)
     except BaseException as inis:

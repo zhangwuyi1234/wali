@@ -5,6 +5,8 @@ import codecs
 import io 
 import sys  
 import cPickle as pickle
+import time
+
 
 #889976
 def getName():
@@ -25,7 +27,8 @@ def getName():
 				#print(c)
 
 def getData(query):
-    url = "http://www.iwencai.com/regression/back-test-new?query="+query+"&daysForSaleStrategy=2,5,10&startDate=2016-05-26&endDate=2017-11-14&fell=0.001"
+    url = "http://www.iwencai.com/regression/back-test-new?query="+query+"&daysForSaleStrategy=2,5,10&startDate=2011-05-26&endDate=2017-11-14&fell=0.001"
+    print(url)
     r = requests.get(url)
     d=r.text
     d.encode("utf-8")
@@ -37,16 +40,17 @@ def getData(query):
     list=[]
     for i in c:
         list.append(float(i['winRate']))
-	  fitness=int(max(list)*100)
+	fitness=int(max(list)*100)
     output=str(fitness)+url
-    if fitness>70:
+    if fitness>80:
         dump(output)
-    print(output)
+    print(fitness)
     return fitness
 #getData()
 
 def dump(data):
-    output = open("dayu70.bin", 'wb')
+    t = str(time.time())
+    output = open("dayu80.bin"+t, 'wb')
     pickle.dump(data, output)
 
 def writ(str):
@@ -62,8 +66,7 @@ def read():
     list=[]		
     for i in text:
         list.append(i.decode("utf-8")[:-1])
-    print(len(list))
-    print(list[-1])
+    #print(len(list))
     return list
 #getName()
 
@@ -74,7 +77,11 @@ def run(individual):
     for i in individual:
         temp+=list[i]
     query=temp+u"非新股;非ST;非*ST;非停牌;不包含ST;非停牌股;不含次新股;非创业板;上市天数>30日;股价5-45元;"
-    return getData(query)
+    try:
+        fitness=getData(query)
+    except BaseException as inis:
+        return 0
+    return fitness
 #list=[0,2,4,5]
 #print(run(list))	
 

@@ -23,8 +23,8 @@ def getName():
             str=k['value']
             for c in str:
                 #list.append(name+u''+c)
-				writ(name+u''+c+';\n')
-				#print(c)
+		writ(name+u''+c+';\n')
+		#print(c)
 
 def getData(query):
     url = "http://www.iwencai.com/regression/back-test-new?query="+query+"&daysForSaleStrategy=2,5,10&startDate=2011-05-26&endDate=2017-11-14&fell=0.001"
@@ -43,18 +43,21 @@ def getData(query):
 	fitness=int(max(list)*100)
     output=str(fitness)+url
     if fitness>80:
-        dump(output)
+        writByPath(output,'strategy.txt')
     print(fitness)
     return fitness
 #getData()
 
 def dump(data):
     t = str(time.time())
-    output = open("dayu80.bin"+t, 'wb')
+    output = open("dayu80"+t+".bin", 'wb')
     pickle.dump(data, output)
 
 def writ(str):
-    with open('douban.txt','a') as f:
+    writByPath(str,'douban.txt')
+		
+def writByPath(str,filePath):
+    with open(filePath,'a') as f:
         for s in str:
             s = s.encode('utf-8')
             f.write(s)  

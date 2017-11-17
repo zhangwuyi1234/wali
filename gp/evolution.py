@@ -22,7 +22,7 @@ def getBaseValue():
 toolbox.register("attr_bool",getBaseValue)
 
 # Structure initializers
-toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, 22)
+toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, 19)
 toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
 def evalOneMax(individual):

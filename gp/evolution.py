@@ -16,19 +16,19 @@ creator.create("Individual", array.array, typecode='b', fitness=creator.FitnessM
 toolbox = base.Toolbox()
 
 def getBaseValue():
-    return random.randint(0,7)
+    return random.randint(0,21)
 
 # Attribute generator
 toolbox.register("attr_bool",getBaseValue)
 
 # Structure initializers
-toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, 50)
+toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, 20)
 toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
 def evalOneMax(individual):
     time.sleep(5)
     indList=individual.tolist()
-	  #sum(individual),
+	#sum(individual),
     return t.run(indList)
 
 toolbox.register("evaluate", evalOneMax)
@@ -49,7 +49,7 @@ def main():
     
     pop, log = algorithms.eaSimple(pop, toolbox, cxpb=0.5, mutpb=0.2, ngen=20, 
                                    stats=stats, halloffame=hof, verbose=True)
-    print(len(hof[0]))
+    #print(len(hof[0]))
     #print(hof)
     
     return pop, log, hof

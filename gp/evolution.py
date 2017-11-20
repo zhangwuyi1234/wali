@@ -2,7 +2,7 @@
 import array
 import random
 import numpy
-import fitness as t
+import barinFack as bf
 import time
 
 from deap import algorithms
@@ -16,20 +16,20 @@ creator.create("Individual", array.array, typecode='b', fitness=creator.FitnessM
 toolbox = base.Toolbox()
 
 def getBaseValue():
-    return random.randint(0,100)
+    return random.randint(0,7)
 
 # Attribute generator
 toolbox.register("attr_bool",getBaseValue)
 
 # Structure initializers
-toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, 19)
+toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, 300)
 toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
 def evalOneMax(individual):
-    time.sleep(5)
     indList=individual.tolist()
-	#sum(individual),
-    return t.run(indList)
+	#bf.run(indList)
+    #sum(individual) 
+    return bf.run(indList) ,
 
 toolbox.register("evaluate", evalOneMax)
 toolbox.register("mate", tools.cxTwoPoint)
@@ -51,7 +51,7 @@ def main():
                                    stats=stats, halloffame=hof, verbose=True)
     #print(len(hof[0]))
     #print(hof)
-    
+    print pop
     return pop, log, hof
 
 if __name__ == "__main__":

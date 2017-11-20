@@ -27,7 +27,7 @@ def getName():
 		#print(c)
 
 def getData(query):
-    url = "http://www.iwencai.com/regression/back-test-new?query="+query+"&daysForSaleStrategy=2,5,10&startDate=2011-05-26&endDate=2017-11-14&fell=0.001"
+    url = "http://www.iwencai.com/regression/back-test-new?query="+query+"&daysForSaleStrategy=2,5,10&startDate=2011-05-26&endDate=2017-11-14&fell=0.002"
     print(url)
     r = requests.get(url)
     d=r.text

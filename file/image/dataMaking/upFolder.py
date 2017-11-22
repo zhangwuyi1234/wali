@@ -9,8 +9,8 @@ def checkPath(path):
     if os.path.exists(path):
 	#os.path.isfile(path):
         if os.path.isdir(path):
-            return true
-    return false
+            return True
+    return False
 
 def mkdir(path):
     path=path.strip()

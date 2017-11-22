@@ -39,7 +39,7 @@ def shearFileList(folderPath):
 
 def shearFolder(folder,folderPath,dirNum):
     for fileName in folder:
-        tempPath=folderPath+"/bin"+dirNum+"/"+fileName
+        tempPath=folderPath+"/"+fileName
         #shutil.copy(tempPath, folderPath+"/bin"+dirNum) 
         imgShear(tempPath,folderPath+"/bin"+dirNum+"/"+fileName)
         os.remove(tempPath)

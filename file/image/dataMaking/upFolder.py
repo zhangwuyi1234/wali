@@ -7,7 +7,8 @@ from PIL import Image
 
 def checkPath(path):
     if os.path.exists(path):
-        if os.path.isfile(path):
+	#os.path.isfile(path):
+        if os.path.isdir(path):
             return true
     return false
 
@@ -57,7 +58,7 @@ def shearFileList(folderPath):
 def shearFolder(folder,folderPath,dirNum):
     for fileName in folder:
         tempPath=folderPath+"/"+fileName
-        if !checkPath(tempPath):
+        if checkPath(tempPath):
             continue			  
         #shutil.copy(tempPath, folderPath+"/bin"+dirNum) 
         imgShear(tempPath,folderPath+"/bin"+dirNum+"/"+fileName)

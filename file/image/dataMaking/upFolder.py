@@ -14,7 +14,7 @@ def mkdir(path):
         return False
 def imgShear(srcPath,tagetPath):
     try:
-        im=Image.open(imagePath)
+        im=Image.open(srcPath)
         img_size = im.size
         #print("图片宽度和高度分别是{}".format(img_size))
         w = img_size[0]/2.0

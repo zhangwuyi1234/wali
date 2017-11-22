@@ -72,8 +72,8 @@ def checkDirImage(folderPath):
 if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
-    imgSize=2000
-    stratNum=0
+    imgSize=1000
+    stratNum=1
     
     #checkDirImage(folderPath)
     shearFileList(folderPath)

@@ -7,7 +7,7 @@ from PIL import Image
 
 def checkPath(path):
     if os.path.exists(path):
-        if os.path.isfile(path")	
+        if os.path.isfile(path):
             return true
     return false
 

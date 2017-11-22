@@ -12,6 +12,13 @@ def mkdir(path):
         return True
     else:
         return False
+def remove(path):
+    isExists=os.path.exists(path)
+    if isExists:
+        os.remove(path)
+        return True
+    else:
+        return False
 def imgShear(srcPath,tagetPath):
     try:
         im=Image.open(srcPath)
@@ -26,7 +33,7 @@ def imgShear(srcPath,tagetPath):
         bg.paste(region,region)
         bg.save(tagetPath)
     except BaseException as inst:
-	os.remove(srcPath)
+	remove(srcPath)
 
 def shearFileList(folderPath):
     fileList=listdir(folderPath)
@@ -45,7 +52,7 @@ def shearFolder(folder,folderPath,dirNum):
         tempPath=folderPath+"/"+fileName
         #shutil.copy(tempPath, folderPath+"/bin"+dirNum) 
         imgShear(tempPath,folderPath+"/bin"+dirNum+"/"+fileName)
-        os.remove(tempPath)
+        remove(tempPath)
         #os.system(' rm -rf '+tempPath)  
         
 def upShearFileList(folderPath):
@@ -66,7 +73,7 @@ def checkImageOpen(imagePath):
         im=Image.open(imagePath)
         im=im.convert('RGB')
     except BaseException as inst:
-	os.remove(imagePath)
+	remove(imagePath)
 def checkDirImage(folderPath):
     imgList=listdir(folderPath)
     for i in imgList:

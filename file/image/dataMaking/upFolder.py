@@ -4,6 +4,13 @@ import shutil
 from os import listdir
 from PIL import Image
 
+
+def checkPath(path):
+    if os.path.exists(path):
+        if os.path.isfile(path")	
+            return true
+    return false
+
 def mkdir(path):
     path=path.strip()
     isExists=os.path.exists(path)
@@ -50,6 +57,8 @@ def shearFileList(folderPath):
 def shearFolder(folder,folderPath,dirNum):
     for fileName in folder:
         tempPath=folderPath+"/"+fileName
+        if !checkPath(tempPath):
+            continue			  
         #shutil.copy(tempPath, folderPath+"/bin"+dirNum) 
         imgShear(tempPath,folderPath+"/bin"+dirNum+"/"+fileName)
         remove(tempPath)
@@ -83,7 +92,7 @@ if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
     imgSize=1000
-    stratNum=1
+    stratNum=31
     
     #checkDirImage(folderPath)
     shearFileList(folderPath)

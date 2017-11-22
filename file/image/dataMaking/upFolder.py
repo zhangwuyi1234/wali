@@ -26,7 +26,7 @@ def imgShear(srcPath,tagetPath):
         bg.paste(region,region)
         bg.save(tagetPath)
     except BaseException as inst:
-	os.remove(imagePath)
+	os.remove(srcPath)
 
 def shearFileList(folderPath):
     fileList=listdir(folderPath)

@@ -13,17 +13,20 @@ def mkdir(path):
     else:
         return False
 def imgShear(srcPath,tagetPath):
-    im = Image.open(srcPath)
-    img_size = im.size
-    #print("图片宽度和高度分别是{}".format(img_size))
-    w = img_size[0]/2.0
-    h = img_size[1]/2.0
-    x = 0
-    y = 0
-    region = im.crop((x, y, x+w, y+h))
-    bg = Image.new("RGB", region.size, (255,255,255))
-    bg.paste(region,region)
-    bg.save(tagetPath)
+    try:
+        im=Image.open(imagePath)
+        img_size = im.size
+        #print("图片宽度和高度分别是{}".format(img_size))
+        w = img_size[0]/2.0
+        h = img_size[1]/2.0
+        x = 0
+        y = 0
+        region = im.crop((x, y, x+w, y+h))
+        bg = Image.new("RGB", region.size, (255,255,255))
+        bg.paste(region,region)
+        bg.save(tagetPath)
+    except BaseException as inst:
+	os.remove(imagePath)
 
 def shearFileList(folderPath):
     fileList=listdir(folderPath)

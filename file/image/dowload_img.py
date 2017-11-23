@@ -23,7 +23,9 @@ if __name__ == "__main__":
         path="/data/image/"+output+'_'+fileName+".png"
         isExists=os.path.exists(path)
         if not isExists:
-            qb.dowImage(fileName,path)
+            try:
+                qb.dowImage(fileName,path)
+            except BaseException as inst:
         db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':2}})
             
     upMongo.upShare()

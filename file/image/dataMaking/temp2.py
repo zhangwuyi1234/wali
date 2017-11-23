@@ -20,6 +20,5 @@ def shearFileList(folderPath):
 if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
-    imgSize=200
     shearFileList(folderPath)
   

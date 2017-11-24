@@ -25,7 +25,9 @@ if __name__ == "__main__":
         if not isExists:
             try:
                 qb.dowImage(fileName,path)
+                db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':2}})
             except BaseException as inst:
                 print("dowImageError")
-        db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':2}})     
+                db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':-1}})
+             
     upMongo.upShare()

@@ -93,7 +93,7 @@ if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
     imgSize=1000
-    stratNum=31
+    stratNum=38
     
     #checkDirImage(folderPath)
     shearFileList(folderPath)

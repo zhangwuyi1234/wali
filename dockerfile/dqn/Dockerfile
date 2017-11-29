@@ -1,5 +1,8 @@
 FROM centos　　　　　　　　　　　　　　 
-MAINTAINER zhangwuyi　　　　　　   
+MAINTAINER zhangwuyi　　　
+RUN yum -y install unzip
+RUN yum -y install git
+RUN yum -y install wget
 RUN yum -y install openssh-server;yum clean all  
 RUN yum -y install epel-release
 RUN yum -y install python-pip
@@ -19,10 +22,6 @@ RUN　tar -zxvf pip-8.0.2.tar.gz
 RUN　cd pip-8.0.2
 RUN　python3 setup.py build
 RUN　python3 setup.py install
-
-RUN yum -y install unzip
-RUN yum -y install git
-RUN yum -y install wget
 
 RUN mkdir /data && cd /data && git clone git://github.com/zhangwuyi1234/wali.git
 

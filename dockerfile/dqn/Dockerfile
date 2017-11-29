@@ -1,18 +1,14 @@
 FROM centos　　　　　　　　　　　　　　 
 MAINTAINER zhangwuyi　　　　　　   
-
-
 RUN yum -y install openssh-server;yum clean all  
 RUN yum -y install epel-release
 RUN yum -y install python-pip
 RUN yum -y install gcc
 RUN yum -y install python-devel
 RUN yum -y install emacs
-
-
 RUN yum -y install zlib-devel
 RUN yum -y install openssl-devel
-RUN　wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz
+RUN mkdir /data && cd /data　&& wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz
 RUN　tar -zxvf Python-3.5.3.tgz
 RUN　cd Python-3.5.3
 RUN　./configure --prefix=/usr/local/python3 --enable-shared

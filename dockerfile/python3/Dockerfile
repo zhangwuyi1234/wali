@@ -4,9 +4,24 @@ MAINTAINER zhangwuyi　　　　　　
 
 RUN yum -y install openssh-server;yum clean all  
 RUN yum -y install epel-release
-RUN yum -y install python-pip
+
+RUN yum install zlib-devel
+RUN yum install openssl-devel
+RUN　wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz
+RUN　tar -zxvf Python-3.5.3.tgz
+RUN　cd Python-3.5.3
+RUN　./configure --prefix=/usr/local/python3 --enable-shared
+RUN　make && make install
+
+RUN　wget --no-check-certificate  https://pypi.python.org/packages/source/p/pip/pip-8.0.2.tar.gz#md5=3a73c4188f8dbad6a1e6f6d44d117eeb
+RUN　tar -zxvf pip-8.0.2.tar.gz
+RUN　cd pip-8.0.2
+RUN　python3 setup.py build
+RUN　python3 setup.py install
+
+
 RUN yum -y install gcc
-RUN yum -y install python-devel
+RUN yum -y install python3-devel
 RUN yum -y install emacs
 
 RUN yum -y install unzip

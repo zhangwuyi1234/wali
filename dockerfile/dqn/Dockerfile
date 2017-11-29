@@ -10,8 +10,8 @@ RUN yum -y install python-devel
 RUN yum -y install emacs
 
 
-RUN yum install zlib-devel
-RUN yum install openssl-devel
+RUN yum -y install zlib-devel
+RUN yum -y install openssl-devel
 RUN　wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz
 RUN　tar -zxvf Python-3.5.3.tgz
 RUN　cd Python-3.5.3

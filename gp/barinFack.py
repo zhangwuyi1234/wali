@@ -20,9 +20,10 @@ def mainloop(program, bracket_map):
             tape.dec()  
         elif code == ".":  
             # print  
-            outList.append(tape.get())
+            outList.append(0.5)
         elif code == ",":  
             # read from stdin  
+            outList.append(tape.get())
             tape.set(0.5)  
         elif code == "[" and tape.get() == 0:  
             # Skip forward to the matching ]  
@@ -31,7 +32,7 @@ def mainloop(program, bracket_map):
             # Skip back to the matching [  
             pc = bracket_map[pc]  
         pc += 1  
-    #return tape.get()
+    return outList
 
 class Tape(object):  
     def __init__(self):  
@@ -76,7 +77,7 @@ def parse(program):
 def fitnessValue(output,taget):
     temp= (1.0-(output-taget)/taget)*100
     if temp>100.0:
-        temp=200.0-temp   
+        temp=200.0-temp  
     return temp
 
 
@@ -93,8 +94,8 @@ def run(indList):
     print program_contents
     try:
         program, bm = parse(program_contents)  
-        mainloop(program, bm)  
-        return fitnessValue(outList,data)
+        list1=mainloop(program, bm) 
+        return fitnessValue(sum(list1),sum(data)) 
     except BaseException as inis:
         return 0       
 

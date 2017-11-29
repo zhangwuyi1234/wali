@@ -13,7 +13,7 @@ RUN yum -y install unzip
 RUN yum -y install git
 RUN yum -y install wget
 
-RUN mkdir /usr/work && cd /usr/work && git clone git://github.com/zhangwuyi1234/github.git
+RUN mkdir /data && cd /data && git clone git://github.com/zhangwuyi1234/wali.git
 
 RUN pip3 install pymongo
 RUN pip3 install oss2

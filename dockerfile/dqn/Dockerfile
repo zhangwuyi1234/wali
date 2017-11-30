@@ -15,7 +15,7 @@ RUN mkdir /data && cd /data
 RUN wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz
 RUN tar -zxvf Python-3.5.3.tgz
 RUN cd Python-3.5.3/  
-RUN./configure 
+RUN ./configure 
 RUN make && make install
 
 RUN wget --no-check-certificate  https://pypi.python.org/packages/source/p/pip/pip-8.0.2.tar.gz#md5=3a73c4188f8dbad6a1e6f6d44d117eeb

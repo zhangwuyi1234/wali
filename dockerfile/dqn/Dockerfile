@@ -24,7 +24,7 @@ RUN pip3 install qiniu
 RUN pip3 install requests
 RUN pip3 install numpy
 RUN pip3 install tensorlayer
-RUN pip3 install tensorflow
+RUN pip3 install --upgrade tensorflow 
 
 
 RUN mkdir /var/run/sshd  

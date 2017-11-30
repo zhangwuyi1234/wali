@@ -23,8 +23,9 @@ RUN pip3 install oss2
 RUN pip3 install qiniu
 RUN pip3 install requests
 RUN pip3 install numpy
-RUN pip3 install tensorlayer
 RUN pip3 install --upgrade tensorflow 
+RUN pip3 install --upgrade tensorlayer
+
 
 
 RUN mkdir /var/run/sshd  

@@ -6,7 +6,8 @@ RUN yum -y install wget
 RUN yum -y install openssh-server;yum clean all  
 RUN yum -y install epel-release
 RUN yum -y install python-pip
-RUN yum -y install gcc
+RUN yum -y install gcc automake autoconf libtool make
+RUN yum install gcc gcc-c++
 RUN yum -y install python-devel
 RUN yum -y install emacs
 RUN yum -y install zlib-devel

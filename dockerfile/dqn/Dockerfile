@@ -22,7 +22,7 @@ RUN pip3 install pymongo
 RUN pip3 install oss2
 RUN pip3 install qiniu
 RUN pip3 install requests
-RUN pip3 install Pillow
+#RUN pip3 install Pillow
 RUN pip3 install numpy
 RUN pip3 install opencv-python
 RUN pip3 install tensorflow

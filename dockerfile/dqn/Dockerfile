@@ -17,9 +17,7 @@ RUN wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz && tar -zxvf P
 
 RUN wget --no-check-certificate  https://pypi.python.org/packages/source/p/pip/pip-8.0.2.tar.gz#md5=3a73c4188f8dbad6a1e6f6d44d117eeb
 RUN tar -zxvf pip-8.0.2.tar.gz
-RUN cd pip-8.0.2
-RUN python3 setup.py build
-RUN python3 setup.py install
+RUN cd pip-8.0.2 && python3 setup.py build && python3 setup.py install
 
 RUN mkdir /data && cd /data && git clone git://github.com/zhangwuyi1234/wali.git
 

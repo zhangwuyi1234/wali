@@ -11,7 +11,8 @@ RUN yum -y install python-devel
 RUN yum -y install emacs
 RUN yum -y install zlib-devel
 RUN yum -y install openssl-devel
-RUN mkdir /data && cd /data && wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz && tar -zxvf Python-3.5.3.tgz && ./configure && make && make install
+RUN mkdir /data && cd /data && wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz && tar -zxvf Python-3.5.3.tgz 
+RUN /data/Python-3.5.3/configure && make && make install
 
 RUN wget --no-check-certificate  https://pypi.python.org/packages/source/p/pip/pip-8.0.2.tar.gz#md5=3a73c4188f8dbad6a1e6f6d44d117eeb
 RUN tar -zxvf pip-8.0.2.tar.gz

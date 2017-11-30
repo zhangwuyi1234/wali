@@ -5,53 +5,30 @@ import os
 data=[1,2,3,4,5,6,7,9]
 outList=[]
 
-def mainloop(program, bracket_map):  
-    pc = 0  
-    tape = Tape()  
-    while pc < len(program):  
-        code = program[pc]  
-        if code == ">":  
-            tape.advance()  
-        elif code == "<":  
-            tape.devance()  
-        elif code == "+":  
-            tape.inc()  
-        elif code == "-":  
-            tape.dec()  
-        elif code == ".":  
-            # print  
-            outList.append(0.5)
-        elif code == ",":  
-            # read from stdin  
-            outList.append(tape.get())
-            tape.set(0.5)  
-        elif code == "[" and tape.get() == 0:  
-            # Skip forward to the matching ]  
-            pc = bracket_map[pc]  
-        elif code == "]" and tape.get() != 0:  
-            # Skip back to the matching [  
-            pc = bracket_map[pc]  
-        pc += 1  
+def mainloop(program):  
+    m=program;i=n=p=0;d="";a=[0]*30000
+    while len(m)-1-i:
+        s=m[i];o=1
+        if s=='>':p+=1
+        if s=='<':p-=1
+        if s=='+':a[p]+=1
+        if s=='-':a[p]-=1
+        if s=='.':outList.append(a[p])
+        if s==',':a[p]=ord(d[n]);n+=1
+        if s=='[' and a[p]==0:
+            while o:
+                i+=1;c=m[i];
+                if c=='[':o+=1
+                if c==']':o-=1
+        if s==']':
+            while o:
+                i-=1;c=m[i]
+                if c=='[':o-=1
+                if c==']':o+=1
+            i-=1
+        i+=1
     return outList
 
-class Tape(object):  
-    def __init__(self):  
-        self.thetape = data 
-        self.position = 0  
-    def get(self):  
-        return self.thetape[self.position]  
-    def set(self, val):  
-        self.thetape[self.position] = val  
-    def inc(self):  
-        self.thetape[self.position] += 1  
-    def dec(self):  
-        self.thetape[self.position] -= 1  
-    def advance(self):  
-        self.position += 1  
-        if len(self.thetape) <= self.position:  
-            self.thetape.append(0)  
-    def devance(self):  
-        self.position -= 1 
 
 def parse(program):  
     parsed = []  
@@ -71,14 +48,18 @@ def parse(program):
             pc += 1  
     if len(leftstack) !=0:
         raise Exception(" parse error ")
-    return "".join(parsed), bracket_map  
+    return "".join(parsed)  
     
 
+
+
 def fitnessValue(output,taget):
-    temp= (1.0-(output-taget)/taget)*100
-    if temp>100.0:
-        temp=200.0-temp  
-    return temp
+    temp=0
+    if output<taget:
+        temp=temp-(taget-1000)+output
+    else:
+        temp=taget+1000-output
+    print temp
 
 
 def indListToProgram(indList):
@@ -89,18 +70,23 @@ def indListToProgram(indList):
     return ''.join(program_contents)
 
 def run(indList):  
-    #program_contents="++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>."
+    #program_contents = ".,[,[].+>.>+,+->>,+,++>-.<]<,[--[+-]>,<+<>,>]->>.+.[-+.>+[->+-[+<.+++,--[>-.<][<<++[>[,+,>>+]+<-]>,]>>[.-<,.-,--,]+>-.-].+[]>.<[+[.,-,,+,]>[<.-,<>,[>-,.[<[.<,>.]>><+>,.,<---<-.--]][,.]><]<--.><.-,[+],<+.].<<],+++,,[+>..[]-]<.]<+[<>,<>..>-><->>.>-,]>>"
     program_contents=indListToProgram(indList)
-    print program_contents
+    re=0
     try:
-        program, bm = parse(program_contents)  
-        list1=mainloop(program, bm) 
-        return fitnessValue(sum(list1),sum(data)) 
+        program = parse(program_contents) 
+        re=re+10
+        list1=mainloop(program)
+        re=re+20
+        temp1=fitnessValue(sum(list1),sum(data)) 
+        re=re+30+temp1
+        return temp1
     except BaseException as inis:
-        return 0       
-
-
-
-
+        print re
+        return re
+if __name__ == "__main__":
+    #run([])
+    program_contents = ".,[,[].+>.>+,+->>,+,++>-.<]<,[--[+-]>,<+<>,>]->>.+.[-+.>+[->+-[+<.+++,--[>-.<][<<++[>[,+,>>+]+<-]>,]>>[.-<,.-,--,]+>-.-].+[]>.<[+[.,-,,+,]>[<.-,<>,[>-,.[<[.<,>.]>><+>,.,<---<-.--]][,.]><]<--.><.-,[+],<+.].<<],+++,,[+>..[]-]<.]<+[<>,<>..>-><->>.>-,]>>"
+    print(len(program_contents))
 
 

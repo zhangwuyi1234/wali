@@ -13,6 +13,7 @@ import getData as gd
 from PIL import Image
 import aliyunTools as ob
 import backup.upMongo as upMongo
+import hash.hashTools as ht
 
 ob.init("oss1")
 importlib.reload(sys)
@@ -90,8 +91,9 @@ def sumImage(files,code,end):
     toImage.save(filePath)
 
     key=q.upload_without_key(code+end,filePath)
+    enHash=ht.enHash(filePath);
     ob.upImage(code+end,filePath)
-    db.image.insert({'fileName':key,'flag':0})
+    db.image.insert({'fileName':key,'flag':0,'enHash':enHash})
     os.remove(files[0])
     os.remove(filePath)
     os.remove(files[-1])

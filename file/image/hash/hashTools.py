@@ -59,8 +59,8 @@ if __name__ == "__main__":
         if not isExists:
             db.image.update({'fileName':fileName},{'$set':{'flag':1}})
         else:
-            enHash=enHash(path)
-            print(enHash)
-            db.image.update({'fileName':fileName},{'$set':{'enHash':enHash}})
+            strenHash=enHash(path)
+            print(strenHash)
+            db.image.update({'fileName':fileName},{'$set':{'enHash':strenHash}})
     if count!=0:
         upMongo.upShare()    

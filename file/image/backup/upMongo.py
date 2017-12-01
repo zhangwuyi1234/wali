@@ -13,7 +13,8 @@ def upShare():
     #os.system(' cd /tmp ')
     os.system('mongodump -h 127.0.0.1 -d share -o share')
     os.system('tar -cvf share.tar share ')
-    key="share_"+str(time.strftime())+".tar"
+    timeStr=time.strftime('%Y-%m-%d',time.localtime(time.time()))
+    key="share_"+timeStr+".tar"
     q.upFile( key, 'share.tar')
     #q.upload_without_key("share0",'share1.tar','share.tar')
     shutil.rmtree('share')

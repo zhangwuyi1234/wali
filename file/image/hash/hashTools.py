@@ -32,6 +32,7 @@ def similarity(hash1,hash2):
 
 if __name__ == "__main__":
     from pymongo import *
+    import os
     import sys
     sys.path.append("..")
     import backup.upMongo as upMongo

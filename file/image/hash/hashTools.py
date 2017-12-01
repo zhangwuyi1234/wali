@@ -47,7 +47,7 @@ if __name__ == "__main__":
     count=db.image.count({'flag':2,'enHash':{'$exists':'false'}})
     print(count)
     if count==0:
-        return
+        return 0
     k=0
     for i in range(count):
         i=i+1

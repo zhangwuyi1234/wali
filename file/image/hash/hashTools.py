@@ -44,23 +44,19 @@ if __name__ == "__main__":
     db = client.share
     collection = db.code
     
-    count=db.image.count({'flag':2,'enHash':0})
+    count=db.image.count({'enHash':0})
     print(count)
     k=0
     for i in range(count):
         i=i+1
-        image=db.image.find({"flag":2,'enHash':0}).skip(k).limit(i)
+        image=db.image.find({'enHash':0}).skip(k).limit(i)
         k=i
         output=str(image[0]['output'])
         fileName=str(image[0]['fileName'])
         path="/data/image/"+output+'_'+fileName+".png"
         isExists=os.path.exists(path)
         if not isExists:
-            try:
-                db.image.update({'fileName':fileName},{'$set':{'flag':1}})
-            except BaseException as inst:
-                print("updateImageError")
-                db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':-1}})
+            db.image.update({'fileName':fileName},{'$set':{'flag':1}})
         else:
             enHash=enHash(path)
             print(enHash)

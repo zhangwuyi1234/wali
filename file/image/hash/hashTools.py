@@ -58,7 +58,7 @@ if __name__ == "__main__":
             except BaseException as inst:
                 print("updateImageError")
                 db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':-1}})
-         else:
+        else:
             enHash=enHash(path)
             print(enHash)
             db.image.update({'fileName':fileName},{'$set':{'enHash':enHash}})

@@ -44,12 +44,14 @@ if __name__ == "__main__":
     db = client.share
     collection = db.code
     
-    count=db.image.count({'flag':2,'enHash':{'$exists':False}})
+    count=db.image.count({'flag':2,'enHash':{'$exists':'false'}})
     print(count)
+    if count==0:
+        return
     k=0
     for i in range(count):
         i=i+1
-        image=db.image.find({"flag":2,'enHash':{'$exists':False}}).skip(k).limit(i)
+        image=db.image.find({"flag":2,'enHash':{'$exists':'false'}}).skip(k).limit(i)
         k=i
         output=str(image[0]['output'])
         fileName=str(image[0]['fileName'])

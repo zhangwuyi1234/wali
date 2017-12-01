@@ -46,8 +46,6 @@ if __name__ == "__main__":
     
     count=db.image.count({'flag':2,'enHash':{'$exists':'false'}})
     print(count)
-    if count==0:
-        return 0
     k=0
     for i in range(count):
         i=i+1
@@ -67,4 +65,5 @@ if __name__ == "__main__":
             enHash=enHash(path)
             print(enHash)
             db.image.update({'fileName':fileName},{'$set':{'enHash':enHash}})
-    upMongo.upShare()
+    if count!=0:
+        upMongo.upShare()    

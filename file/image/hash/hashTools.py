@@ -2,7 +2,6 @@
 from PIL import Image
 import imagehash
 from numpy import *
-from pymongo import *
 
 def enHash(imagePath):
     highfreq_factor = 1
@@ -32,6 +31,7 @@ def similarity(hash1,hash2):
 
 
 if __name__ == "__main__":
+    from pymongo import *
     #imagePath1="/home/wuyi/data/toimage/28bird_bullocks_oriole.jpg"
     #imagePath2="/home/wuyi/data/toimage/30bird_bullocks_oriole.jpg"
     #hash1=enHash(imagePath1)

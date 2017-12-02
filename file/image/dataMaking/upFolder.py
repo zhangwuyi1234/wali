@@ -73,7 +73,7 @@ def upShearFileList(folderPath):
         for fn in fnlist:
             isExists=os.path.exists(folderPath+"/"+fn)
             if not isExists:
-                shutil.copy(dirName+"/"+fn, folderPath+"/"+fn) 
+                shutil.copy(dirName+"/"+fn, "/data/image/"+fn) 
         shutil.rmtree(dirName)
 	
 
@@ -92,8 +92,8 @@ def checkDirImage(folderPath):
 if __name__ == "__main__":
     folderPath="/data/image"
     folder_ad_Path="/data/toimage"
-    imgSize=1000
-    stratNum=38
+    imgSize=4000
+    stratNum=0
     
     #checkDirImage(folderPath)
     shearFileList(folderPath)

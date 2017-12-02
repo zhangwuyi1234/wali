@@ -10,6 +10,8 @@ db = client.share
 collection = db.code
 
 if __name__ == "__main__":
+    import hash.hashTools as ht
+    
     count=db.image.count({"flag":1,"output":{ '$ne' : -2 }})
     print(count)
     #count=4000
@@ -22,12 +24,17 @@ if __name__ == "__main__":
         fileName=str(image[0]['fileName'])
         path="/data/image/"+output+'_'+fileName+".png"
         isExists=os.path.exists(path)
+        flag=1
         if not isExists:
             try:
                 qb.dowImage(fileName,path)
-                db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':2}})
+                flag=2
+                #db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':2}})
             except BaseException as inst:
                 print("dowImageError")
-                db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':-1}})
-             
+                flag=-1
+                #db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':-1}})
+        strenHash=ht.enHash(path)
+        print(strenHash)
+        db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':flag,'enHash':strenHash}})
     upMongo.upShare()

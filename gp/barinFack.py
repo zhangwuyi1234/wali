@@ -137,7 +137,7 @@ def indListToProgram(indList):
 def run(indList):
     program_contents=indListToProgram(indList)
     #program_contents = ""
-    #print program_contents
+    print program_contents
     datas=[1,2,3,4,5,6,7,9]
     re=-1
     try:

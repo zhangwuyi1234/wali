@@ -4,6 +4,7 @@ import random
 import numpy
 import barinFack as bf
 import time
+import cPickle as p
 
 from deap import algorithms
 from deap import base
@@ -34,14 +35,18 @@ def evalOneMax(individual):
 toolbox.register("evaluate", evalOneMax)
 toolbox.register("mate", tools.cxTwoPoint)
 toolbox.register("mutate", tools.mutFlipBit, indpb=0.05)
-toolbox.register("select", tools.selTournament, tournsize=3)
+toolbox.register("select", tools.selTournament, tournsize=10)      #tournsize   selectNum 
 
 
 
 def main():
     random.seed(64)
-    
-    pop = toolbox.population(n=300)  #list size
+    pop = toolbox.population(n=300)  #定义了300个个体的种群！
+    try:
+        rFile =file('pop.data','r')
+        pop=p.load(rFile)
+    except BaseException:
+        print "loadError"
     hof = tools.HallOfFame(1)
     stats = tools.Statistics(lambda ind: ind.fitness.values)
     stats.register("avg", numpy.mean)
@@ -49,12 +54,15 @@ def main():
     stats.register("min", numpy.min)
     stats.register("max", numpy.max)
     
-    pop, log = algorithms.eaSimple(pop, toolbox, cxpb=0.5, mutpb=0.2, ngen=10000, 
+    #cxpb交叉率  mutpb变异率   ngen迭代次数
+    pop, log = algorithms.eaSimple(pop, toolbox, cxpb=0.5, mutpb=0.2, ngen=500, 
                                    stats=stats, halloffame=hof, verbose=True)
     #print(len(hof[0]))
     #print(hof)
-    print hof
-    return pop, log, hof
+    myFile =file('pop.data','a')
+    p.dump(pop,myFile)
+
+    #print pop, log, hof
 
 if __name__ == "__main__":
     main()

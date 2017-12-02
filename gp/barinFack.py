@@ -148,12 +148,16 @@ def run(indList):
         list1=mainloop(program_contents,bm,data)
         re=re+10
         temp1=fitnessValue(sum(list1),sum(datas)) 
-        print str(re)+"======="+str(temp1)
         if temp1<0:
-            temp1=10
-        return re+temp1
+            temp1=0
+        else:
+            temp1=temp1/20
+        print str(re)+"======="+str(temp1)
+        re=re+temp1
+        print re
+        return re
     except BaseException as inis:
-        print "BaseException==="
+        temps=0
     print re
     return re
 

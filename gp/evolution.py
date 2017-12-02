@@ -55,7 +55,7 @@ def main():
     stats.register("max", numpy.max)
     
     #cxpb交叉率  mutpb变异率   ngen迭代次数
-    pop, log = algorithms.eaSimple(pop, toolbox, cxpb=0.5, mutpb=0.2, ngen=500, 
+    pop, log = algorithms.eaSimple(pop, toolbox, cxpb=0.5, mutpb=0.2, ngen=1000, 
                                    stats=stats, halloffame=hof, verbose=True)
     #print(len(hof[0]))
     #print(hof)

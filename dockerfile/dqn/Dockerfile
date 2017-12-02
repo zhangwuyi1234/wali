@@ -6,9 +6,11 @@ MAINTAINER henrry
 # 安装python 和 pip
 RUN apt update \
         && apt install -y python3-pip python3-dev vim \
-        && apt install -y emacs
-        && apt install -y git
-        && apt install -y wget
+        && apt install -y emacs \
+        && apt-get install python3 \
+        && apt-get install python3-pip \
+        && apt install -y git \
+        && apt install -y wget \
         && pip3 install --upgrade pip \
         && pip3 install tensorflow \
         && pip3 install tensorlayer \

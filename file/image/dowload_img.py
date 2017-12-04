@@ -34,7 +34,8 @@ if __name__ == "__main__":
                 print("dowImageError")
                 flag=-1
                 #db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':-1}})
-        strenHash=ht.enHash(path)
-        print(strenHash)
-        db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':flag,'enHash':strenHash}})
+        if isExists:
+            strenHash=ht.enHash(path)
+            print(strenHash)
+            db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':flag,'enHash':strenHash}})
     upMongo.upShare()

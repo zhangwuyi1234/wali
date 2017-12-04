@@ -25,17 +25,19 @@ if __name__ == "__main__":
         path="/data/image/"+output+'_'+fileName+".png"
         isExists=os.path.exists(path)
         flag=1
+        strenHash=0
         if not isExists:
             try:
                 qb.dowImage(fileName,path)
+                strenHash=ht.enHash(path)
                 flag=2
                 #db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':2}})
             except BaseException as inst:
                 print("dowImageError")
                 flag=-1
                 #db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':-1}})
-        if os.path.exists(path):
+        else:
             strenHash=ht.enHash(path)
             print(strenHash)
-            db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':flag,'enHash':strenHash}})
+        db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':flag,'enHash':strenHash}})
     upMongo.upShare()

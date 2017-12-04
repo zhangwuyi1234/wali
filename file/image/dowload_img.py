@@ -37,7 +37,10 @@ if __name__ == "__main__":
                 flag=-1
                 #db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':-1}})
         else:
-            strenHash=ht.enHash(path)
-            print(strenHash)
+            try:
+                strenHash=ht.enHash(path)
+                print(strenHash)
+            except OSError as osin:
+                strenHash=0
         db.image.update({'flag':1,'fileName':fileName},{'$set':{'flag':flag,'enHash':strenHash}})
     upMongo.upShare()

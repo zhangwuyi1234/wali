@@ -1,3 +1,5 @@
+import requests
+
 def get_out_ip():
     url = r'http://1212.ip138.com/ic.asp'
     r = requests.get(url)

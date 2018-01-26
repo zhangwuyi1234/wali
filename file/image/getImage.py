@@ -93,7 +93,7 @@ def sumImage(files,code,end):
     key=q.upload_without_key(code+end,filePath)
     enHash=ht.enHash(filePath);
     ob.upImage(code+end,filePath)
-    db.image.insert({'fileName':key,'flag':0,'enHash':enHash})
+    db.image.insert({'fileName':key,'flag':0,'enHash':enHash,'newFlag':1})
     os.remove(files[0])
     os.remove(filePath)
     os.remove(files[-1])
@@ -102,6 +102,8 @@ def sumImage(files,code,end):
 end=time.strftime("%Y%2m%d",time.localtime())
 end=str(int(end))
 #2end="20170615"
+
+db.image.update({'flag':1},{'$set':{'flag':0}})
 
 count=db.code.count({"flag":0})
 #print(codes[0]['c8ode'])
